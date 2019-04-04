@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthForm from './AuthForm.js'
+import { withUser } from '../context/UserProvider.js'
 
 class Auth extends Component {
     constructor(){
@@ -23,7 +24,15 @@ class Auth extends Component {
 
     handleLoginSubmit = e => {
       e.preventDefault()
-
+     
+      //call a signup function
+      const credentials = {
+        username: this.state.username,
+        password: this.state.password
+      }
+      
+      this.props.login(credentials) 
+      
       this.setState({
           username: "",
           password: ""
@@ -34,6 +43,13 @@ class Auth extends Component {
     handleSignupSubmit = e => {
       e.preventDefault()
 
+      //call a signup function
+      const credentials = {
+        username: this.state.username,
+        password: this.state.password
+      }
+      this.props.signup(credentials)
+
       this.setState({
           username: "",
           password: ""
@@ -42,6 +58,7 @@ class Auth extends Component {
     }
 
     render(){
+        //console.log(this.props)
         return (
           <div>
             { this.state.formToggle ? 
@@ -76,4 +93,4 @@ class Auth extends Component {
 
 }
 
-export default Auth
+export default withUser(Auth)

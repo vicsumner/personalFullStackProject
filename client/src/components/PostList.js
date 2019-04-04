@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import PostForm from './PostForm.js'
+import { withUser } from '../context/UserProvider.js'
 
 class PostList extends Component {
     constructor(){
@@ -11,6 +12,10 @@ class PostList extends Component {
 
     }
 
+    componentDidMount(){
+        this.props.getUserPosts()
+    }
+
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -20,6 +25,8 @@ class PostList extends Component {
     handleSubmit = e =>{
         e.preventDefault()
 
+        this.props.addPost(this.state)
+        
         this.setState({
               caption: "",
               imgUrl: ""
@@ -36,10 +43,11 @@ class PostList extends Component {
                 imgUrl={this.state.imgUrl}
 
             />
+            {this.props.posts.map(post => <h1 key={post._id}>{post.caption}</h1>)}
             Post List
           </div>
         )
     }
 }
 
-export default PostList
+export default withUser(PostList)

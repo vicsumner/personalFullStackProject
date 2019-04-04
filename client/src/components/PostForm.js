@@ -3,7 +3,7 @@ import React from 'react'
 const PostForm = props => {
     const { handleSubmit, handleChange, caption, imgUrl } = props
     return (
-      <form>
+      <form onSubmit={handleSubmit}>
         <input 
         type="text" 
         name="caption" 

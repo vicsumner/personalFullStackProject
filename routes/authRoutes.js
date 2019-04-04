@@ -44,7 +44,7 @@ authRouter.post("/login", (req, res, next) => {
         }
 
         const token = jwt.sign(user.toObject(), process.env.SECRET)
-        return res.status(200).send({user: user.toObject, token})
+        return res.status(200).send({user: user.toObject(), token})
   })
 })
 module.exports = authRouter
