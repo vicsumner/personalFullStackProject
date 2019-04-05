@@ -8,7 +8,7 @@ const ProtectedRoute = props => {
   const { path, redirectTo, component: Component, ...rest } = props
   return (
     props.token
-      ? <Route path={path} render={rProps =>
+      ? <Route path={path} render={rProps => 
         <ErrorBoundary>
           <Component {...rProps} {...rest} />
         </ErrorBoundary>

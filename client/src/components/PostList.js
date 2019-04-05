@@ -44,7 +44,7 @@ class PostList extends Component {
 
             />
             {this.props.posts.map(post => <h1 key={post._id}>{post.caption}</h1>)}
-            Post List
+            
           </div>
         )
     }

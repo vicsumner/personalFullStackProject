@@ -71,6 +71,7 @@ class Auth extends Component {
                     handleSubmit={this.handleSignupSubmit}
                     btnText="Sign Up"
                     />
+                <p>{this.props.errMsg}</p>
                 <p onClick={this.toggleForm}>Already a User? </p>
             </>
             :
@@ -83,6 +84,7 @@ class Auth extends Component {
                     handleSubmit={this.handleLoginSubmit}
                     btnText="Login"
                     />
+                <p>{this.props.errMsg}</p>    
                 <p onClick={this.toggleForm}>Not a User yet? </p>    
             </>
             }
