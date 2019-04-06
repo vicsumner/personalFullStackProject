@@ -6,6 +6,9 @@ import PostList from './components/PostList.js'
 import ProtectedRoute from './shared/ProtectedRoute.js'
 import NotFound from './components/NotFound.js'
 import AuthContainer from './components/AuthContainer.js';
+import Home from './components/Home.js'
+import Test from './components/Test.js'
+import Navbar from './components/Nav.js'
 
 class App extends Component{
   // constructor(){
@@ -20,7 +23,7 @@ class App extends Component{
       return (
         <div>
             {/* {!token && <button onClick={() => this.props.history.push("/")}>Login</button>} */}
-            {token && <button onClick={logout}>Logout</button>}
+            
             <Switch>
                 <Route  exact path="/" render={rProps => 
                                                 token
@@ -32,10 +35,15 @@ class App extends Component{
                 <ProtectedRoute 
                     path={"/posts"} 
                     redirectTo="/" 
-                    component={PostList} />
-                <ProtectedRoute path="*" redirectTo="" component={NotFound}/>   
-                {/* <Route path="*" component={NotFound} />   */}
-            </Switch>
+                    component={PostList}
+                    token={token} />
+                  
+                    {/* <Route path="*" component={NotFound} />   */}
+                <ProtectedRoute path="/Home" component={Home} token={token} redirectTo="/" />
+                <ProtectedRoute path="/Test" component={Test} token={token} redirectTo="/" />
+                <ProtectedRoute path="*" redirectTo="" component={NotFound} /> 
+             </Switch>
+             {token && <Navbar  logout={logout}/>}
         </div>
       )
   }

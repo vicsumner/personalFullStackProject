@@ -50,25 +50,29 @@ class AuthContainer extends Component {
       return(
           <div>
             { this.state.authToggle ?
-
-            <AuthForm 
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSignUp}
-                username={this.state.username}
-                password={this.state.password}
-                btnText="Sign Up"
-            
-            />
-
-            :
-
-            <AuthForm
-                handleChange={this.handleChange}
-                handleSubmit={this.handleLogin}
-                username={this.state.username}
-                password={this.state.password}
-                btnText="Log In"
-            />  
+                <>
+                  <h3>Sign Up</h3>
+                  <AuthForm 
+                      handleChange={this.handleChange}
+                      handleSubmit={this.handleSignUp}
+                      username={this.state.username}
+                      password={this.state.password}
+                      btnText="Sign Up"
+                  />
+                  <p onClick={this.toggler}>Already a member?</p>
+                </>
+                :
+                <>
+                    <h3>Login</h3>
+                    <AuthForm
+                        handleChange={this.handleChange}
+                        handleSubmit={this.handleLogin}
+                        username={this.state.username}
+                        password={this.state.password}
+                        btnText="Log In"
+                    />
+                    <p onClick={this.toggler}>Not a member?</p>
+                </>  
 
             }
           </div>

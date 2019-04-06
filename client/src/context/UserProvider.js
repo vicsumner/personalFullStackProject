@@ -36,7 +36,7 @@ class UserProvider extends Component {
           user,
           token,
           errMsg: ""
-        }, () => this.props.history.push("/posts"))
+        }, () => this.props.history.push("/home"))
 
       })
       .catch(err => this.setState({ errMsg: err.response.data.errMsg }))
@@ -52,7 +52,7 @@ class UserProvider extends Component {
           user,
           token,
           errMsg: ""
-        }, () => this.props.history.push("/posts"))
+        }, () => this.props.history.push("/home"))
       })
       .catch(err => this.setState({ errMsg: err.response.data.errMsg }))
   }
